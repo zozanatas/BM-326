@@ -1,0 +1,33 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Kodu Çek
+      uses: actions/checkout@v3
+    
+    - name: Node.js Kurulumu
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+        
+    - name: Bağımlılıkları Yükle
+      run: npm install
+      
+    - name: Unit Testleri Çalıştır
+      run: npm test
+
+  deploy:
+    needs: build-and-test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Render'a Otomatik Deploy Tetikle
+      run: curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK_URL }}"

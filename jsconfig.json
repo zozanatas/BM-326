@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES6", //javascript standartları kullanacağımız
+    "module": "commonjs", //node.js'in standart modül yapısı kullanacağımız
+    "allowJs": true, //rojede javascript dosyalarına izin 
+    "checkJs": false, //denetleme
+    "skipLibCheck": true, //nodemodules hataları görmezden gelir
+    "esModuleInterop": true, //farklı modül tiplerinde uyumlu geçiş sağlar
+
+    //typeorm kullanırken decarotor kullanmak için
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+
+    "strict": false, //çok katı hata denetimini kapatır
+  "ignoreDeprecations": "5.0"
+  },
+  "include": ["**/*"], //projedekiler bu yapılandırmada
+  "exclude": ["node_modules"] //node_modules klasörünü bu işlemlerin dışında tutar
+}
