@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Smart E-Mail Reply Assistant",
+  "version": "1.0",
+  "description": "Gelen e-postalarınızı yapay zeka ile analiz edip profesyonel yanıt taslakları oluşturur.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://mail.google.com/*",
+    "https://outlook.live.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+  ,
+  "content_scripts": [
+  {
+    "matches": ["https://mail.google.com/*"],
+    "js": ["content.js"]
+  }
+]}
